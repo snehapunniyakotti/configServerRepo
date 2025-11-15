@@ -1,6 +1,7 @@
 # configServerRepo
 This is the parctice repository to config the centralized server
 
+##########################################
 Eureka server creation : 
 step 1: add dependencies - (spring-cloud-starter-netflix-eureka-server and spring-boot-starter-web).
 step 2: annote this annotation - (@EnableEurekaServer) in mail class.
@@ -18,3 +19,18 @@ eureka.client.fetch-registry=false
 //Normally, microservices register themselves into Eureka.But the Eureka Server should not try to register itself as a client.
 eureka.client.register-with-eureka=false
 """
+
+###########################################
+ApiGateWay creation:
+step 1: add dependencies - (spring-boot-starter-web, spring-cloud-starter-gateway, spring-cloud-starter-netflix-eureka-client , reactor-test(if want to test reactive)
+step 2:  add the following properties in application.properties
+"""
+server.port=5000
+
+spring.cloud.gateway.server.webflux.discovery.locator.enabled=true
+spring.cloud.gateway.server.webflux.discovery.locator.lower-case-service-id=true
+
+spring.main.web-application-type=reactive
+"""
+
+
